@@ -95,15 +95,31 @@ st.write("Train shape:", X_train.shape)
 st.write("Test shape:", X_test.shape)
 
 st.markdown("## TASK #6: Logistic Regression")
+
+# Đảm bảo y là int (nhị phân 0/1)
+df_encoded['left'] = df_encoded['left'].astype(int)
+X = df_encoded.drop('left', axis=1)
+y = df_encoded['left']
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0, stratify=y
+)
+# Kiểm tra phân bố và kiểu dữ liệu
+st.write("Class distribution in y_train:", y_train.value_counts())
+st.write("Data type of y_train:", y_train.dtype)
+# Huấn luyện Logistic Regression
 log_model = LogisticRegression()
 log_model.fit(X_train, y_train)
 y_pred_log = log_model.predict(X_test)
-st.text(f"Accuracy: {accuracy_score(y_test, y_pred_log)*100:.2f}%")
+# Đánh giá mô hình
+accuracy = accuracy_score(y_test, y_pred_log)
+st.text(f"Accuracy: {accuracy * 100:.2f}%")
 st.text("Classification Report:\n" + classification_report(y_test, y_pred_log))
+# Confusion Matrix
 fig, ax = plt.subplots()
 sns.heatmap(confusion_matrix(y_test, y_pred_log), annot=True, fmt='d', cmap='Blues', ax=ax)
 ax.set_title("Confusion Matrix - Logistic Regression")
 st.pyplot(fig)
+
 
 st.markdown("## TASK #7: Random Forest")
 rf_model = RandomForestClassifier()
