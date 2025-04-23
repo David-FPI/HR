@@ -35,7 +35,7 @@ st.markdown(\"""
 - `promotion_last_5years`: Promotion in last 5 years (1 = Yes, 0 = No)
 - `sales`: Department
 - `salary`: Salary level (low, medium, high)
-\""" )
+
 
 st.markdown("## TASK #3: Dataset Overview")
 st.subheader("Step 3.1 | Dataset Basic Information")
