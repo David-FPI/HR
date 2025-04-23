@@ -133,7 +133,8 @@ ax.set_title("Confusion Matrix - Random Forest")
 st.pyplot(fig)
 
 
-st.markdown("## TASK #8: Random Forest")
+st.markdown("## TASK #8: Conclusion")
+
 # Model names
 models = ['Logistic Regression', 'Random Forest']
 
@@ -183,10 +184,11 @@ plt.ylim(0, 1.2)
 plt.legend()
 
 plt.tight_layout()
-plt.show()
 
-# After training and evaluating both the Logistic Regression and Random Forest classifiers, let's compare their performance metrics and draw some conclusions.
+# Streamlit's way to display matplotlib plots
+st.pyplot(plt)
 
+# Conclusions in markdown format
 st.markdown("""
 ### **1. Accuracy:**
 - **Logistic Regression**: 77%
@@ -231,3 +233,4 @@ The Random Forest model consistently outperforms the Logistic Regression model a
 
 For practical applications, especially when identifying employees at risk of leaving the company, Random Forest is the more reliable model, offering both high precision and recall. Therefore, it would be recommended to use **Random Forest** over **Logistic Regression** for this dataset.
 """)
+
