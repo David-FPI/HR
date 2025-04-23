@@ -24,7 +24,7 @@ st.markdown("## TASK #2: Read Dataset")
 st.dataframe(df.head())
 
 st.markdown("### Dataset Description")
-st.markdown(\"""
+st.markdown("""
 - `satisfaction_level`: Employee satisfaction level
 - `last_evaluation`: Last performance evaluation score
 - `number_project`: Number of projects assigned
@@ -35,7 +35,7 @@ st.markdown(\"""
 - `promotion_last_5years`: Promotion in last 5 years (1 = Yes, 0 = No)
 - `sales`: Department
 - `salary`: Salary level (low, medium, high)
-\""" )
+""" )
 
 st.markdown("## TASK #3: Dataset Overview")
 st.subheader("Step 3.1 | Dataset Basic Information")
