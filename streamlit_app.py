@@ -131,3 +131,103 @@ fig, ax = plt.subplots()
 sns.heatmap(confusion_matrix(y_test, y_pred_rf), annot=True, fmt='d', cmap='Greens', ax=ax)
 ax.set_title("Confusion Matrix - Random Forest")
 st.pyplot(fig)
+
+
+st.markdown("## TASK #8: Random Forest")
+# Model names
+models = ['Logistic Regression', 'Random Forest']
+
+# Accuracy
+accuracy = [77, 99]
+
+# Precision, Recall, F1-Score for Class 0
+precision_0 = [0.80, 0.99]
+recall_0 = [0.93, 1.00]
+f1_score_0 = [0.86, 0.99]
+
+# Precision, Recall, F1-Score for Class 1
+precision_1 = [0.53, 1.00]
+recall_1 = [0.24, 0.97]
+f1_score_1 = [0.33, 0.98]
+
+# Plotting Accuracy
+plt.figure(figsize=(12, 8))
+
+plt.subplot(2, 2, 1)
+plt.bar(models, accuracy, color=['blue', 'green'])
+plt.title('Accuracy Comparison')
+plt.ylim(0, 100)
+plt.ylabel('Accuracy (%)')
+
+# Plotting Precision, Recall, F1-Score for Class 0
+x = np.arange(len(models))
+width = 0.2
+
+plt.subplot(2, 2, 2)
+plt.bar(x - width, precision_0, width, label='Precision (Class 0)', color='blue')
+plt.bar(x, recall_0, width, label='Recall (Class 0)', color='orange')
+plt.bar(x + width, f1_score_0, width, label='F1-Score (Class 0)', color='green')
+plt.xticks(x, models)
+plt.title('Class 0 (Did not leave) Metrics Comparison')
+plt.ylim(0, 1.2)
+plt.legend()
+
+# Plotting Precision, Recall, F1-Score for Class 1
+plt.subplot(2, 2, 3)
+plt.bar(x - width, precision_1, width, label='Precision (Class 1)', color='blue')
+plt.bar(x, recall_1, width, label='Recall (Class 1)', color='orange')
+plt.bar(x + width, f1_score_1, width, label='F1-Score (Class 1)', color='green')
+plt.xticks(x, models)
+plt.title('Class 1 (Left the company) Metrics Comparison')
+plt.ylim(0, 1.2)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+# After training and evaluating both the Logistic Regression and Random Forest classifiers, let's compare their performance metrics and draw some conclusions.
+
+st.markdown("""
+### **1. Accuracy:**
+- **Logistic Regression**: 77%
+- **Random Forest**: 99%
+
+**Conclusion:** Random Forest significantly outperforms Logistic Regression in terms of accuracy, achieving a near-perfect score. This indicates that Random Forest is more effective at correctly predicting both classes in the dataset.
+
+### **2. Precision, Recall, and F1-Score:**
+
+#### **A. For Class 0 (Did not leave the company):**
+
+- **Logistic Regression:**
+  - Precision: 0.80
+  - Recall: 0.93
+  - F1-Score: 0.86
+
+- **Random Forest:**
+  - Precision: 0.99
+  - Recall: 1.00
+  - F1-Score: 0.99
+
+#### **B. For Class 1 (Left the company):**
+
+- **Logistic Regression:**
+  - Precision: 0.53
+  - Recall: 0.24
+  - F1-Score: 0.33
+
+- **Random Forest:**
+  - Precision: 1.00
+  - Recall: 0.97
+  - F1-Score: 0.98
+
+### **3. Confusion Matrix:**
+
+- **Logistic Regression**: Shows a significant number of false negatives (employees who left the company but were predicted to stay).
+- **Random Forest**: Has almost no false positives or false negatives, further confirming its superior performance.
+
+### **Overall Conclusion:**
+
+The Random Forest model consistently outperforms the Logistic Regression model across all key metrics: accuracy, precision, recall, and F1-score. The Random Forest model's ability to handle complex patterns in the data makes it a better choice for this classification task.
+
+For practical applications, especially when identifying employees at risk of leaving the company, Random Forest is the more reliable model, offering both high precision and recall. Therefore, it would be recommended to use **Random Forest** over **Logistic Regression** for this dataset.
+""")
